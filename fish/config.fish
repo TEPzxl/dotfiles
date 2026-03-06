@@ -53,3 +53,6 @@ pyenv init - | source
 # ---- zoxide ----
 zoxide init fish | source
 
+if test -f ~/.config/fish.secret.fish
+    source ~/.config/fish.secret.fish
+end
