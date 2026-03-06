@@ -52,3 +52,4 @@ pyenv init - | source
 
 # ---- zoxide ----
 zoxide init fish | source
+
