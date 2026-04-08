@@ -56,3 +56,24 @@ zoxide init fish | source
 if test -f ~/.config/fish.secret.fish
     source ~/.config/fish.secret.fish
 end
+
+# add go path
+fish_add_path $HOME/go/bin
+
+# Add quick execute the last command abbreviation
+function last_history_item
+    echo $history[1]
+end
+
+abbr -a !! --position anywhere --function last_history_item
+
+
+if status is-interactive
+    # 只有当不在 VS Code 终端里，且当前是家目录时，才跳转
+    # $TERM_PROGRAM 在 VS Code 里会被设置为 'vscode'
+    if test "$TERM_PROGRAM" != "vscode"; and test "$PWD" = "$HOME"
+        cd /home/tep/dev
+    end
+end
+
+kubectl completion fish | source
